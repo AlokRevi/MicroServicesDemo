@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway1
+server:
+  port: 8012
+eureka:
+  client:
+    register-with-eureka: true
+  service-url: http://localhost:8761/eureka/
+
+  cloud:
+    gateway:
+      routes:
+        - id: SearchEngine
+          uri: lb://SEARCHENGINE
+          predicates:
+            - Path=/searchengine/**
+        - id: Orders
+          uri: lb://ORDERS
+           - Path=/orders/hello
+
+
+
